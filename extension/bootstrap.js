@@ -9,6 +9,9 @@ const {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
 var GNOMEThemeTweak = {
+    availableStyles: ["fxbutton", "newtab-page", "restore-button", "tabs-border", "urlbar-history-dropmarker"],
+    appliedStyles: [],
+    
     loadStyle: function(name) {
         let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
         let uri = Services.io.newURI("resource://gnome-theme-tweak/content/tweaks/"+name+".css", null, null);
@@ -24,19 +27,20 @@ var GNOMEThemeTweak = {
     },
 
     init: function() {
-        this.loadStyle("fxbutton");
-        this.loadStyle("newtab-page");
-        this.loadStyle("restore-button");
-        this.loadStyle("tabs");
-        this.loadStyle("urlbar-history-dropmarker");
+        let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.gnome-theme-tweak.");
+        
+        for (var i = 0; i < this.availableStyles.length; i++) {
+            if(preferences.getPrefType(this.availableStyles[i]) && preferences.getBoolPref(this.availableStyles[i]) == true) {
+                this.loadStyle(this.availableStyles[i]);
+                this.appliedStyles.push(this.availableStyles[i]);
+            }
+        }
     },
     
     uninit: function() {
-        this.unloadStyle("fxbutton");
-        this.unloadStyle("newtab-page");
-        this.unloadStyle("restore-button");
-        this.unloadStyle("tabs");
-        this.unloadStyle("urlbar-history-dropmarker");
+        for (var i = 0; i < this.appliedStyles.length; i++) {
+            this.unloadStyle(this.appliedStyles[i]);
+        }
     },
 }
 
@@ -82,7 +86,19 @@ function shutdown(data, reason) {
 }
 
 function install(data, reason) {
+    /*
+    let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.gnome-theme-tweak.");
+    preferences.setBoolPref("fxbutton", true);
+    preferences.setBoolPref("tabs-border", true);
+    */
 }
 
 function uninstall(data, reason) {
+    /*
+    try {
+        let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService);
+        preferences.QueryInterface(Ci.nsIPrefBranch);
+        preferences.deleteBranch("extensions.gnome-theme-tweak.");
+    } catch (e) {}
+    */
 }
