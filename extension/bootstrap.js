@@ -14,14 +14,14 @@ var GNOMEThemeTweak = {
     
     loadStyle: function(name) {
         let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
-        let uri = Services.io.newURI("resource://gnome-theme-tweak/content/tweaks/"+name+".css", null, null);
+        let uri = Services.io.newURI("chrome://gnome-theme-tweak/content/tweaks/"+name+".css", null, null);
         if (!sss.sheetRegistered(uri, sss.USER_SHEET))
             sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
     },
     
     unloadStyle: function(name) {
         let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
-        let uri = Services.io.newURI("resource://gnome-theme-tweak/content/tweaks/"+name+".css", null, null);
+        let uri = Services.io.newURI("chrome://gnome-theme-tweak/content/tweaks/"+name+".css", null, null);
         if (sss.sheetRegistered(uri, sss.USER_SHEET))
             sss.unregisterSheet(uri, sss.USER_SHEET);
     },
