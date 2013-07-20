@@ -13,6 +13,7 @@
     onload="window.close();"> <!-- Close window if it gets opened directly for some reason -->
   <setting pref="extensions.gnome-theme-tweak.newtab-page" type="bool" title="&newtabpage.label;"/>
   <setting pref="extensions.gnome-theme-tweak.restore-button" type="bool" title="&restorebutton.label;"/>
+  <setting pref="extensions.gnome-theme-tweak.relief-buttons" type="bool" title="&reliefbuttons.label;"/>
   <setting pref="extensions.gnome-theme-tweak.tabs-border" type="bool" title="&tabsborder.label;"/>
   <setting pref="extensions.gnome-theme-tweak.urlbar-history-dropmarker" type="bool" title="&urlbarhistorydropmarker.label;"/>
 </window>

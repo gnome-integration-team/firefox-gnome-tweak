@@ -4,5 +4,6 @@
 
 <!ENTITY newtabpage.label              "White background for a newtab page">
 <!ENTITY restorebutton.label           "Hide restore button in fullscreen">
+<!ENTITY reliefbuttons.label           "Relief buttons">
 <!ENTITY tabsborder.label              "Hide white border after tabs toolbar">
 <!ENTITY urlbarhistorydropmarker.label "Hide history dropmarker in urlbar">

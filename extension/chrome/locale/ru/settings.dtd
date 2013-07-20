@@ -4,5 +4,6 @@
 
 <!ENTITY newtabpage.label              "Белый фон на новой вкладке">
 <!ENTITY restorebutton.label           "Скрыть кнопку выхода из полноэкранного режима">
+<!ENTITY reliefbuttons.label           "Объемные кнопки на панели навигации">
 <!ENTITY tabsborder.label              "Скрыть белый бордюр у панели с вкладками">
 <!ENTITY urlbarhistorydropmarker.label "Скрыть кнопку показа истории в панели ввода адреса">
