@@ -36,7 +36,7 @@ var GNOMEThemeTweak = {
         this.prefs.addObserver("", this, false);
         
         for (var i = 0; i < this.availableStyles.length; i++) {
-            if(preferences.getPrefType(this.availableStyles[i]) && preferences.getBoolPref(this.availableStyles[i]) == true) {
+            if(this.prefs.getPrefType(this.availableStyles[i]) && this.prefs.getBoolPref(this.availableStyles[i]) == true) {
                 this.loadStyle(this.availableStyles[i]);
                 this.appliedStyles.push(this.availableStyles[i]);
             }
@@ -44,6 +44,8 @@ var GNOMEThemeTweak = {
     },
     
     uninit: function() {
+        this.prefs.removeObserver("", this);    
+        
         for (var i = 0; i < this.appliedStyles.length; i++) {
             this.unloadStyle(this.appliedStyles[i]);
         }
