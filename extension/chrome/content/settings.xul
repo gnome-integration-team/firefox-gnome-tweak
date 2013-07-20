@@ -9,7 +9,6 @@
     width="1"
     height="1"
     onload="window.close();"> <!-- Close window if it gets opened directly for some reason -->
-  <setting pref="extensions.gnome-theme-tweak.fxbutton" type="bool" title="FxButton"/>
   <setting pref="extensions.gnome-theme-tweak.newtab-page" type="bool" title="White background for a newtab page"/>
   <setting pref="extensions.gnome-theme-tweak.restore-button" type="bool" title="Hide restore button in fullscreen"/>
   <setting pref="extensions.gnome-theme-tweak.tabs-border" type="bool" title="Hide white border after tabs toolbar"/>

@@ -9,7 +9,7 @@ const {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
 var GNOMEThemeTweak = {
-    availableStyles: ["fxbutton", "newtab-page", "restore-button", "tabs-border", "urlbar-history-dropmarker"],
+    availableStyles: ["newtab-page", "restore-button", "tabs-border", "urlbar-history-dropmarker"],
     appliedStyles: [],
     
     prefs: null,
@@ -109,7 +109,6 @@ function shutdown(data, reason) {
 function install(data, reason) {
     /*
     let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.gnome-theme-tweak.");
-    preferences.setBoolPref("fxbutton", true);
     preferences.setBoolPref("tabs-border", true);
     */
 }
