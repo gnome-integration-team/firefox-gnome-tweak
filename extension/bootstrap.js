@@ -29,9 +29,9 @@ var GNOMEThemeTweak = {
     },
 
     init: function() {
-        this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                               .getService(Components.interfaces.nsIPrefService)
-                               .getBranch("extensions.gnome-theme-tweak.");
+        this.prefs = Cc["@mozilla.org/preferences-service;1"]
+                       .getService(Components.interfaces.nsIPrefService)
+                       .getBranch("extensions.gnome-theme-tweak.");
         
         this.prefs.addObserver("", this, false);
         
