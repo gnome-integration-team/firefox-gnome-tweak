@@ -12,6 +12,8 @@ var GNOMEThemeTweak = {
     availableStyles: ["fxbutton", "newtab-page", "restore-button", "tabs-border", "urlbar-history-dropmarker"],
     appliedStyles: [],
     
+    prefs: null,
+    
     loadStyle: function(name) {
         let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
         let uri = Services.io.newURI("chrome://gnome-theme-tweak/content/tweaks/"+name+".css", null, null);
@@ -27,7 +29,11 @@ var GNOMEThemeTweak = {
     },
 
     init: function() {
-        let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.gnome-theme-tweak.");
+        this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
+                               .getService(Components.interfaces.nsIPrefService)
+                               .getBranch("extensions.gnome-theme-tweak.");
+        
+        this.prefs.addObserver("", this, false);
         
         for (var i = 0; i < this.availableStyles.length; i++) {
             if(preferences.getPrefType(this.availableStyles[i]) && preferences.getBoolPref(this.availableStyles[i]) == true) {
@@ -40,6 +46,21 @@ var GNOMEThemeTweak = {
     uninit: function() {
         for (var i = 0; i < this.appliedStyles.length; i++) {
             this.unloadStyle(this.appliedStyles[i]);
+        }
+    },
+    
+    observe: function(subject, topic, data) {
+        if (topic != "nsPref:changed") {
+            return;
+        }
+        
+        if (this.availableStyles.indexOf(data)) {
+            if (this.prefs.getBoolPref(data)) {
+                this.loadStyle(data);
+            }
+            else {
+                this.unloadStyle(data);
+            }
         }
     },
 }
