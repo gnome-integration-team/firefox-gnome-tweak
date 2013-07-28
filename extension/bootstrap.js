@@ -67,44 +67,11 @@ var GNOMEThemeTweak = {
     },
 }
 
-let ResourceAlias = {
-    register: function(alias, data) {
-        let ios = Services.io;
-        if (!alias) return false;
-        this._alias = alias;
-        if (this._resProtocolHandler) return false;
-        this._resProtocolHandler = ios.getProtocolHandler("resource");
-        this._resProtocolHandler.QueryInterface(Ci.nsIResProtocolHandler);
-        let uri = data.resourceURI;
-        if (!uri) { // packed
-            if (data.installPath.isDirectory()) {
-                uri = ios.newFileURI(data.installPath);
-            } else { // unpacked
-                let jarProtocolHandler = ios.getProtocolHandler("jar");
-                jarProtocolHandler.QueryInterface(Ci.nsIJARProtocolHandler);
-                let spec = "jar:" + ios.newFileURI(data.installPath).spec + "!/";
-                uri = jarProtocolHandler.newURI(spec, null, null);
-            }
-        }
-        this._resProtocolHandler.setSubstitution(alias, uri);
-        return true;
-    },
-    unregister: function() {
-        if (!this._resProtocolHandler) return false;
-        this._resProtocolHandler.setSubstitution(this._alias, null);
-        delete this._resProtocolHandler;
-        delete this._alias;
-        return true;
-    }
-}
-
 function startup(data, reason) {
-    ResourceAlias.register("gnome-theme-tweak", data);
     GNOMEThemeTweak.init();
 }
 
 function shutdown(data, reason) {
-    ResourceAlias.unregister();
     GNOMEThemeTweak.uninit();
 }
 
