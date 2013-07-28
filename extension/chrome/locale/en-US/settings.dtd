@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!ENTITY newtabpage.label              "White background for a newtab page">
-<!ENTITY restorebutton.label           "Hide restore button in fullscreen">
-<!ENTITY reliefbuttons.label           "Relief buttons">
+<!ENTITY restorebutton.label           "Hide restore button in fullscreen mode">
+<!ENTITY reliefbuttons.label           "Relief buttons on the navigation toolbar">
 <!ENTITY tabsborder.label              "Hide white border after tabs toolbar">
-<!ENTITY urlbarhistorydropmarker.label "Hide history dropmarker in urlbar">
+<!ENTITY urlbarhistorydropmarker.label "Hide the history dropmarker in the URL bar">

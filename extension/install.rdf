@@ -8,7 +8,7 @@
     <em:type>2</em:type>
     <em:name>GNOME theme tweak</em:name>
     <em:version>0.2</em:version>
-    <em:description>FIXME</em:description>
+    <em:description>Extension for customizing GNOME theme.</em:description>
     <em:homepageURL>https://github.com/seleznev/firefox-extension-gnome-theme-tweak</em:homepageURL>
     <em:creator>Alexander Seleznev</em:creator>
     
