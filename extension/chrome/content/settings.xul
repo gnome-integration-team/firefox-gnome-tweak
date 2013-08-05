@@ -4,13 +4,13 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!DOCTYPE vbox SYSTEM "chrome://gnome-theme-tweak/locale/settings.dtd">
+<!DOCTYPE window SYSTEM "chrome://gnome-theme-tweak/locale/settings.dtd">
 
 <window
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     width="1"
     height="1"
-    onload="window.close();"> <!-- Close window if it gets opened directly for some reason -->
+    onload="window.close();">
   <setting pref="extensions.gnome-theme-tweak.newtab-page" type="bool" title="&newtabpage.label;"/>
   <setting pref="extensions.gnome-theme-tweak.restore-button" type="bool" title="&restorebutton.label;"/>
   <setting pref="extensions.gnome-theme-tweak.relief-buttons" type="bool" title="&reliefbuttons.label;"/>

@@ -76,18 +76,7 @@ function shutdown(data, reason) {
 }
 
 function install(data, reason) {
-    /*
-    let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.gnome-theme-tweak.");
-    preferences.setBoolPref("tabs-border", true);
-    */
 }
 
 function uninstall(data, reason) {
-    /*
-    try {
-        let preferences = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService);
-        preferences.QueryInterface(Ci.nsIPrefBranch);
-        preferences.deleteBranch("extensions.gnome-theme-tweak.");
-    } catch (e) {}
-    */
 }

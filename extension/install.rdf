@@ -7,7 +7,7 @@
     <em:id>{05f1cdaa-7474-43fa-9f69-c697555f4ea8}</em:id>
     <em:type>2</em:type>
     <em:name>GNOME theme tweak</em:name>
-    <em:version>0.2</em:version>
+    <em:version>0.8</em:version>
     <em:description>Extension for customizing GNOME theme.</em:description>
     <em:homepageURL>https://github.com/seleznev/firefox-extension-gnome-theme-tweak</em:homepageURL>
     <em:creator>Alexander Seleznev</em:creator>
@@ -15,9 +15,9 @@
     <em:optionsURL>chrome://gnome-theme-tweak/content/settings.xul</em:optionsURL>
     <em:optionsType>2</em:optionsType>
     
-    <em:targetPlatform>Linux</em:targetPlatform>
-    
     <em:bootstrap>true</em:bootstrap>
+    
+    <em:targetPlatform>Linux</em:targetPlatform>
     
     <em:targetApplication>
       <Description>
