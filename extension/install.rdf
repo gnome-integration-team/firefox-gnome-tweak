@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>{05f1cdaa-7474-43fa-9f69-c697555f4ea8}</em:id>
     <em:type>2</em:type>
-    <em:name>GNOME theme tweak</em:name>
+    <em:name>GNOME Theme Tweak</em:name>
     <em:version>0.8</em:version>
     <em:description>Extension for customizing GNOME theme.</em:description>
     <em:homepageURL>https://github.com/seleznev/firefox-extension-gnome-theme-tweak</em:homepageURL>
