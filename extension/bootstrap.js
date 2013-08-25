@@ -141,6 +141,9 @@ function startup(data, reason) {
 }
 
 function shutdown(data, reason) {
+    if (reason == APP_SHUTDOWN)
+        return;
+    
     GNOMEThemeTweak.uninit();
 }
 
