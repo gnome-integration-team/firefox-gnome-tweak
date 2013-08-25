@@ -27,7 +27,41 @@ var GNOMEThemeTweak = {
         if (sss.sheetRegistered(uri, sss.USER_SHEET))
             sss.unregisterSheet(uri, sss.USER_SHEET);
     },
-
+    
+    setAttributes: function(window) {
+        if (!window)
+            return;
+        
+        var navbar = window.document.getElementById("nav-bar");
+        if (!navbar)
+            return;
+        
+        navbar.setAttribute("reliefbuttons", this.prefs.getBoolPref("relief-buttons"));
+    },
+    
+    removeAttributes: function(window) {
+        if (!window)
+            return;
+        
+        var navbar = window.document.getElementById("nav-bar");
+        if (!navbar)
+            return;
+        
+        navbar.removeAttribute("reliefbuttons");
+    },
+    
+    windowListener: {
+        onOpenWindow: function(aWindow) {
+            let domWindow = aWindow.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIDOMWindowInternal || Ci.nsIDOMWindow);
+            domWindow.addEventListener("load", function() {
+                domWindow.removeEventListener("load", arguments.callee, false);
+                setAttributes(domWindow);
+            }, false);
+        },
+        onCloseWindow: function(aWindow) { },
+        onWindowTitleChange: function(aWindow, aTitle) { }
+    },
+    
     init: function() {
         this.prefs = Cc["@mozilla.org/preferences-service;1"]
                        .getService(Components.interfaces.nsIPrefService)
@@ -41,6 +75,18 @@ var GNOMEThemeTweak = {
                 this.appliedStyles.push(this.availableStyles[i]);
             }
         }
+        
+        let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
+
+        // Load into any existing windows
+        let enumerator = wm.getEnumerator("navigator:browser");
+        while (enumerator.hasMoreElements()) {
+            let window = enumerator.getNext().QueryInterface(Ci.nsIDOMWindow);
+            this.setAttributes(window);
+        }
+
+        // Load into any new windows
+        wm.addListener(this.windowListener);
     },
     
     uninit: function() {
@@ -48,6 +94,18 @@ var GNOMEThemeTweak = {
         
         for (var i = 0; i < this.appliedStyles.length; i++) {
             this.unloadStyle(this.appliedStyles[i]);
+        }
+        
+        let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
+        
+        // Stop watching for new windows
+        wm.removeListener(this.windowListener);
+        
+        // Unload from any existing windows
+        let enumerator = wm.getEnumerator("navigator:browser");
+        while (enumerator.hasMoreElements()) {
+            let window = enumerator.getNext().QueryInterface(Ci.nsIDOMWindow);
+            removeAttributes(window);
         }
     },
     
@@ -57,6 +115,17 @@ var GNOMEThemeTweak = {
         }
         
         if (this.availableStyles.indexOf(data)) {
+            if (data == "relief-buttons") {
+                let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
+                
+                // Load into any existing windows
+                let enumerator = wm.getEnumerator("navigator:browser");
+                while (enumerator.hasMoreElements()) {
+                    let window = enumerator.getNext().QueryInterface(Ci.nsIDOMWindow);
+                    this.setAttributes(window);
+                }
+            }
+            
             if (this.prefs.getBoolPref(data)) {
                 this.loadStyle(data);
             }
