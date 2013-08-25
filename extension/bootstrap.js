@@ -105,7 +105,7 @@ var GNOMEThemeTweak = {
         let enumerator = wm.getEnumerator("navigator:browser");
         while (enumerator.hasMoreElements()) {
             let window = enumerator.getNext().QueryInterface(Ci.nsIDOMWindow);
-            removeAttributes(window);
+            this.removeAttributes(window);
         }
     },
     
