@@ -9,7 +9,7 @@ const {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
 var GNOMEThemeTweak = {
-    availableStyles: ["newtab-page", "restore-button", "relief-buttons", "inactive-state", "tabs-border", "urlbar-history-dropmarker", "forward-button"],
+    availableStyles: ["newtab-page", "restore-button", "relief-buttons", "tabs-border", "urlbar-history-dropmarker", "forward-button", "inactive-state"],
     appliedStyles: [],
     
     prefs: null,
@@ -53,11 +53,12 @@ var GNOMEThemeTweak = {
     windowListener: {
         onOpenWindow: function(aWindow) {
             let domWindow = aWindow.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIDOMWindowInternal || Ci.nsIDOMWindow);
-            domWindow.addEventListener("load", function() {
-                domWindow.removeEventListener("load", arguments.callee, false);
-                setAttributes(domWindow);
+            domWindow.addEventListener("load", function onLoad() {
+                domWindow.removeEventListener("load", onLoad, false);
+                GNOMEThemeTweak.setAttributes(domWindow);
             }, false);
         },
+        
         onCloseWindow: function(aWindow) { },
         onWindowTitleChange: function(aWindow, aTitle) { }
     },
@@ -70,7 +71,7 @@ var GNOMEThemeTweak = {
         this.prefs.addObserver("", this, false);
         
         for (var i = 0; i < this.availableStyles.length; i++) {
-            if(this.prefs.getPrefType(this.availableStyles[i]) && this.prefs.getBoolPref(this.availableStyles[i]) == true) {
+            if (this.prefs.getPrefType(this.availableStyles[i]) && this.prefs.getBoolPref(this.availableStyles[i]) == true) {
                 this.loadStyle(this.availableStyles[i]);
                 this.appliedStyles.push(this.availableStyles[i]);
             }
