@@ -5,6 +5,7 @@
 <!ENTITY newtabpage.label              "White background for a newtab page">
 <!ENTITY restorebutton.label           "Hide restore button in fullscreen mode">
 <!ENTITY reliefbuttons.label           "Relief buttons on the navigation toolbar">
+<!ENTITY inactivestate.label           "Enable different style for unfocused windows">
 <!ENTITY tabontop.label                "Show tabs on top">
 <!ENTITY tabsborder.label              "Hide white border after tabs toolbar">
 <!ENTITY urlbarhistorydropmarker.label "Hide the history dropmarker in the URL bar">

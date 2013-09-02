@@ -9,7 +9,7 @@ const {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
 var GNOMEThemeTweak = {
-    availableStyles: ["newtab-page", "restore-button", "relief-buttons", "tabs-border", "urlbar-history-dropmarker", "forward-button"],
+    availableStyles: ["newtab-page", "restore-button", "relief-buttons", "inactive-state", "tabs-border", "urlbar-history-dropmarker", "forward-button"],
     appliedStyles: [],
     
     prefs: null,
