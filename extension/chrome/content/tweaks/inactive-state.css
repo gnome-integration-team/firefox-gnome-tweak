@@ -19,8 +19,8 @@ window:-moz-window-inactive #navigator-toolbox:not([tabsontop="false"]) > #nav-b
   color: #a7aba7 !important;
 }
 
-:-moz-any(#navigator-toolbox, #addon-bar, #FindToolbar) toolbarbutton[checked="true"]:-moz-window-inactive,
-#social-toolbar-item > .toolbarbutton-1[checked="true"]:-moz-window-inactive {
+:-moz-any(#navigator-toolbox, #addon-bar, #FindToolbar) toolbarbutton:-moz-window-inactive[checked="true"],
+#social-toolbar-item > .toolbarbutton-1:-moz-window-inactive[checked="true"] {
   background: rgba(100,110,100,0.5) !important;
   border-color: transparent !important;
   color: #eaeaea !important;
@@ -38,8 +38,8 @@ window:-moz-window-inactive #navigator-toolbox:not([tabsontop="false"]) > #nav-b
 #nav-bar[iconsize=large] #forward-button:-moz-window-inactive,
 window:-moz-window-inactive #FindToolbar :-moz-any(.findbar-find-next, .findbar-find-previous),
 /* Relief buttons */
-#nav-bar[reliefbuttons="true"][iconsize=large] > :-moz-any(toolbarbutton:not(#close-button), .toolbarbutton-menubutton-dropmarker):-moz-window-inactive,
-#nav-bar[reliefbuttons="true"][iconsize=large] > toolbaritem:not(#urlbar):not(#unified-back-forward-button) > :-moz-any(toolbarbutton:not(#close-button), .toolbarbutton-menubutton-dropmarker):-moz-window-inactive,
+#nav-bar[reliefbuttons="true"][iconsize=large] > :-moz-any(toolbarbutton:not(#close-button), .toolbarbutton-menubutton-dropmarker):-moz-window-inactive:not([checked="true"]),
+#nav-bar[reliefbuttons="true"][iconsize=large] > toolbaritem:not(#urlbar):not(#unified-back-forward-button) > :-moz-any(toolbarbutton:not(#close-button), .toolbarbutton-menubutton-dropmarker):-moz-window-inactive:not([checked="true"]),
 #social-toolbar-item > .toolbarbutton-1:-moz-window-inactive {
   background: transparent !important;
   border-color: rgba(50,50,50,.4) !important;
@@ -57,19 +57,6 @@ window:-moz-window-inactive #FindToolbar :-moz-any(.findbar-find-next, .findbar-
 #urlbar-stop-button:-moz-window-inactive > .toolbarbutton-icon,
 #urlbar-reload-button:-moz-window-inactive > .toolbarbutton-icon {
   opacity: 1;
-}
-
-/* Adjust opacity of the URL bar icons on hover */
-#urlbar-go-button:not(:-moz-window-inactive):hover > .toolbarbutton-icon,
-#urlbar-reload-button:not(:-moz-window-inactive):hover > .toolbarbutton-icon,
-#urlbar-stop-button:not(:-moz-window-inactive):hover > .toolbarbutton-icon,
-#urlbar #star-button:not(:-moz-window-inactive):hover,
-.urlbar-history-dropmarker:not(:-moz-window-inactive):hover,
-.urlbar-history-dropmarker[open="true"] {
-  filter: url(chrome://browser/skin/symbolic-icons-colors.svg#input-field-hover);
-}
-#urlbar #star-button[starred="true"]:not(:-moz-window-inactive):hover {
-  filter: url(chrome://browser/skin/symbolic-icons-colors.svg#input-field-yellow-hover);
 }
 
 /* Recolor tabstrip underline when the window is inactive */
@@ -133,10 +120,6 @@ window:-moz-window-inactive .tab-icon-image {
   opacity: 0.5;
 }
 
-.search-go-button:not(:-moz-window-inactive):hover {
-  filter: url(chrome://browser/skin/symbolic-icons-colors.svg#input-field-hover);
-}
-
 /* ::::: global/findBar.css ::::: */
 
 .findbar-find-status:-moz-window-inactive {
@@ -156,7 +139,7 @@ findbar checkbox:-moz-window-inactive {
 }
 
 findbar:-moz-window-inactive {
-  background: #e0e0e0;
+  background: #e0e0e0 !important;
 }
 
 /* ::::: global/global.css ::::: */
