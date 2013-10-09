@@ -9,8 +9,9 @@
     <em:name>GNOME Theme Tweak</em:name>
     <em:version>24.0</em:version>
     <em:description>Extension for customizing GNOME theme.</em:description>
-    <em:homepageURL>https://github.com/seleznev/firefox-extension-gnome-theme-tweak</em:homepageURL>
-    <em:creator>Alexander Seleznev</em:creator>
+    <em:homepageURL>https://github.com/gnome-integration-team/firefox-gnome-tweak</em:homepageURL>
+    <em:creator>GNOME Integration Team</em:creator>
+    <em:contributor>Alexander Seleznev</em:contributor>
     
     <em:optionsURL>chrome://gnome-theme-tweak/content/settings.xul</em:optionsURL>
     <em:optionsType>2</em:optionsType>
