@@ -107,6 +107,40 @@ window:-moz-window-inactive .tabbrowser-tabs[overflow] > .tabbrowser-tab[pinned]
   -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-new-inactive.png) 7 8 1 8 fill / 7px 8px 1px 8px stretch !important;
 }
 
+@media (min-resolution: 2dppx) {
+  window:-moz-window-inactive .tabbrowser-tab[selected="true"] > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-selected-inactive-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  
+  window:-moz-window-inactive .tabbrowser-tab:not([selected="true"]) > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-inactive-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  window:-moz-window-inactive .tabbrowser-tab[selected="true"] ~ .tabbrowser-tab > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-inactive-right-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  window:-moz-window-inactive .tabbrowser-tab[selected="true"] ~ .tabbrowser-tab:-moz-locale-dir(rtl) > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-inactive-right-rtl-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  window:-moz-window-inactive .tabbrowser-tabs[overflow] > .tabbrowser-tab[pinned] + .tabbrowser-tab:not([pinned]):not([selected="true"]) > .tab-stack,
+  window:-moz-window-inactive .tabbrowser-tabs[overflow] > .tabbrowser-tab[pinned] ~ .tabbrowser-tab[hidden="true"] + .tabbrowser-tab:not([hidden="true"]):not([selected="true"]) > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-inactive-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  
+  window:-moz-window-inactive .tabbrowser-tab[titlechanged]:not([selected="true"]) > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-new-inactive-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  window:-moz-window-inactive .tabbrowser-tab[selected="true"] ~ .tabbrowser-tab[titlechanged] > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-new-inactive-right-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  window:-moz-window-inactive .tabbrowser-tab[selected="true"] ~ .tabbrowser-tab[titlechanged]:-moz-locale-dir(rtl) > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-new-inactive-right-rtl-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+  window:-moz-window-inactive .tabbrowser-tabs[overflow] > .tabbrowser-tab[pinned] + .tabbrowser-tab:not([pinned])[titlechanged] > .tab-stack,
+  window:-moz-window-inactive .tabbrowser-tabs[overflow] > .tabbrowser-tab[pinned] ~ .tabbrowser-tab[hidden="true"] + .tabbrowser-tab:not([hidden="true"])[titlechanged] > .tab-stack {
+    -moz-border-image: url(chrome://browser/skin/tabbrowser/adwaita-tab-new-inactive-2dppx.png) 14 16 2 16 fill / 7px 8px 1px 8px stretch !important;
+  }
+}
+
 window:-moz-window-inactive .tab-throbber,
 window:-moz-window-inactive .tab-icon-image {
   filter: url(chrome://mozapps/skin/extensions/extensions.svg#greyscale);
